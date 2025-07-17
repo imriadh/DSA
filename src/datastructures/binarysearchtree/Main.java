@@ -11,9 +11,10 @@ public class Main {
         myBST.insert(90);
 
         myBST.insert(27);
+        myBST.insert(100);
         System.out.println(myBST.root.right.right.right.value);
         System.out.println(myBST.conatains(20));
     }
     
-    
+     
 }
