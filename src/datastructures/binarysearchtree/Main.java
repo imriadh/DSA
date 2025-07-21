@@ -15,10 +15,11 @@ public class Main {
         System.out.println(myBST.root.right.value);
        
         System.out.println("-----------------");
+        System.out.println("MINVALUE:" + myBST.minValue(myBST.root.right));
         
         // Print minimum and maximum values
-        System.out.println("Minimum value: " + myBST.minValue());
-        System.out.println("Maximum value: " + myBST.maxValue());
+        // System.out.println("Minimum value: " + myBST.minValue());
+        // System.out.println("Maximum value: " + myBST.maxValue());
         
         myBST.deleteNode(21);
         System.out.println(myBST.root.left.value);
