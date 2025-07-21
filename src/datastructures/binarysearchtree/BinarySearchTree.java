@@ -68,7 +68,7 @@ public class BinarySearchTree {
         return rContains(root,value);
     }
     //Non-Recursive 
-    public boolean conatains(int value){
+    public boolean contains(int value){
         if(root==null) return false;
         Node temp = root;
         while(temp!=null){
@@ -83,6 +83,64 @@ public class BinarySearchTree {
             }
         }
         return false;
+    }
+    // Minimum value of Node
+    public int minValue(Node currentNode){
+        while (currentNode.left !=null) {
+            currentNode = currentNode.left;
+            
+        }
+        return currentNode.value;
+    }
+    // Maximum value of Node
+    public int  maxValue(Node currentNode){
+        while (currentNode.right !=null) {
+            currentNode = currentNode.right;
+            
+        }
+        return currentNode.value;
+    }
+    
+    // Convenience methods for min/max without passing node
+    public int minValue(){
+        if(root == null) throw new RuntimeException("Tree is empty");
+        return minValue(root);
+    }
+    
+    public int maxValue(){
+        if(root == null) throw new RuntimeException("Tree is empty");
+        return maxValue(root);
+    }
+    //Delete Node
+    private Node deleteNode(Node currentNode, int value){
+        if(currentNode==null) return null;
+        if(value < currentNode.value){
+            currentNode.left = deleteNode(currentNode.left, value);
+        }
+        else if(value> currentNode.value){
+            currentNode.right = deleteNode(currentNode.right, value);
+        }
+        else{
+            if(currentNode.left ==null && currentNode.right==null){
+                currentNode = null;
+            }
+            else if (currentNode.left == null){
+                currentNode = currentNode.right;
+            }
+            else if (currentNode.right == null){
+                currentNode = currentNode.left;
+            }
+            else{
+                int subTreeMin = minValue(currentNode.right);
+                currentNode.value = subTreeMin;
+                currentNode.right = deleteNode(currentNode.right, subTreeMin);
+            }
+        }
+        return currentNode;
+
+    }
+    public void deleteNode(int value){
+        deleteNode(root,value);
     }
 }
        
