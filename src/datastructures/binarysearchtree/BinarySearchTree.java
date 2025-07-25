@@ -167,5 +167,19 @@ public class BinarySearchTree {
         }
         return results;
     }
+
+    //DFS
+    public ArrayList<Integer> DFS() {
+        ArrayList<Integer> results = new ArrayList<>();
+        dfsHelper(root, results);
+        return results;
+    }
+
+    private void dfsHelper(Node node, ArrayList<Integer> results) {
+        if (node == null) return;
+        results.add(node.value); // Pre-order traversal
+        dfsHelper(node.left, results);
+        dfsHelper(node.right, results);
+    }
 }
        
