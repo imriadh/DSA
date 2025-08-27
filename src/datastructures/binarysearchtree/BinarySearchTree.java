@@ -169,17 +169,23 @@ public class BinarySearchTree {
     }
 
     //DFS
-    public ArrayList<Integer> DFS() {
-        ArrayList<Integer> results = new ArrayList<>();
-        dfsHelper(root, results);
-        return results;
+  public ArrayList<Integer> DFSPreOrder(){
+    ArrayList<Integer> results = new ArrayList<>();
+    class Traverse {
+        Traverse(Node currentNode){
+            if(currentNode == null) return;
+            results.add(currentNode.value);
+            if(currentNode.left != null){
+                new Traverse(currentNode.left);
+            }
+            if(currentNode.right != null){
+                new Traverse(currentNode.right);
+            }
+        }
     }
-
-    private void dfsHelper(Node node, ArrayList<Integer> results) {
-        if (node == null) return;
-        results.add(node.value); // Pre-order traversal
-        dfsHelper(node.left, results);
-        dfsHelper(node.right, results);
-    }
+    new Traverse(root);
+    return results;
+}
+     
 }
        
