@@ -186,6 +186,19 @@ public class BinarySearchTree {
     new Traverse(root);
     return results;
 }
+
+  // Print the tree in-order (sorted order)
+    public void printTree() {
+        printInOrder(root);
+        System.out.println();
+    }
+
+    private void printInOrder(Node node) {
+        if (node == null) return;
+        printInOrder(node.left);
+        System.out.print(node.value + " ");
+        printInOrder(node.right);
+    }
      
 }
        
